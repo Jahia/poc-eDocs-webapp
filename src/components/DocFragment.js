@@ -98,6 +98,9 @@ export const DocFragment = ({fragment,site,index,...props}) => {
                 <Grid
                     item
                     xs={12}
+                    sx={{
+                        textAlign:"justify"
+                    }}
                 >
                     <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(fragment.content.value)}}/>
                 </Grid>

@@ -1,0 +1,16 @@
+{
+    "loading" : {
+        "bgImage": "Chargement de l'image d'arrière plan en cours...",
+        "default": "Chargement..."
+    },
+    "error" : {
+        "default" : {
+            "title": "Erreur",
+            "msg" : "Une erreur est survenue"
+        },
+        "validation" : {
+            "title": "Erreurs de validation",
+            "msg" : "Une erreur est survenue lors de la validation des paramètres"
+        }
+    }
+}

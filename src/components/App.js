@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {useQuery} from "@apollo/client";
 import {Box, Container, Grid, styled, ThemeProvider, Typography,CircularProgress} from "@mui/material";
 
-import {queryDocument} from "../graphql";
+import {queryDocument} from "_graphql";
 import {JahiaCtx} from "../context";
 import {mergedTheme} from "../theme";
 import {TableOfContents} from "./TableOfContents";

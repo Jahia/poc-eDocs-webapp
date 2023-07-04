@@ -1,13 +1,13 @@
 import {WidenImage} from "components/Media/components/widen/WidenImage";
 import {WidenVideo} from "components/Media/components/widen/WidenVideo";
 import React from "react";
-import {JahiaCtx} from "contexts";
+import {JahiaCtx} from "context";
 import PropTypes from "prop-types";
 import {useQuery} from "@apollo/client";
-import {GetWidenMedia} from "webappGraphql";
+import {GetWidenMedia} from "_graphql";
 import {useTranslation} from "react-i18next";
 
-export const WidenAsset = ({types,id,width,sourceID}) => {
+export const WidenAsset = ({types,id,width,sourceID,...props}) => {
     // const width = '1024';
     const { t } = useTranslation();
     const { workspace, locale, cndTypes } = React.useContext(JahiaCtx);
@@ -31,10 +31,10 @@ export const WidenAsset = ({types,id,width,sourceID}) => {
 
     switch (true){
         case types.includes(cndTypes.WIDEN_IMAGE) && !!imageURL :
-            return <WidenImage imageURL={imageURL} title={title} width={width} />
+            return <WidenImage imageURL={imageURL} title={title} width={width} {...props}/>
 
         case types.includes(cndTypes.WIDEN_VIDEO) && !!videoURL :
-            return <WidenVideo videoId={id} videoURL={videoURL} ownerID={sourceID} />
+            return <WidenVideo videoId={id} videoURL={videoURL} ownerID={sourceID} {...props}/>
 
         default:
             return <></>;

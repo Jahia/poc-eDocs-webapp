@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import App from './components/App';
 import {JahiaCtxProvider} from './context';
 import {ApolloProvider } from '@apollo/client';
-import {getClient} from "./graphql";
+import {getClient} from "./_graphql";
 import reportWebVitals from './reportWebVitals';
 import moment from 'moment/min/moment-with-locales';
 import Moment from 'react-moment';
 import './index.css';
+
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import {appLanguageBundle} from "i18n/resources";
 
 export const cndTypes = {
     // QUIZ:"game4nt:quiz",
@@ -30,14 +34,25 @@ const render = (target,context) =>{
     Moment.globalMoment = moment;
     Moment.globalLocale = /*context.locale ||*/ 'fr';
 
+    const locale = context.locale || 'en';
+    i18n.use(initReactI18next) // passes i18n down to react-i18next
+        .init({
+            resources:appLanguageBundle,
+            lng: locale,
+            fallbackLng: "en",
+            interpolation: {
+                escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+            }
+        });
+
     const root = ReactDOM.createRoot(document.getElementById(target));
     root.render(
         <React.StrictMode>
             <JahiaCtxProvider value={{
                 workspace: context.workspace || process.env.REACT_APP_JCONTENT_WORKSPACE || 'LIVE',
-                locale:context.locale || 'en',
+                locale,
                 documentId:context.documentId,
-                host:context.host,
+                host:context.host || process.env.REACT_APP_JCONTENT_HOST,
                 cndTypes
             }}
             >

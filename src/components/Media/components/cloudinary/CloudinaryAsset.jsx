@@ -1,13 +1,13 @@
 import React from "react";
-import {JahiaCtx} from "contexts";
+import {JahiaCtx} from "context";
 import PropTypes from "prop-types";
 import {CloudinaryImage} from "components/Media/components/cloudinary/CloudinaryImage";
 import {CloudinaryVideo} from "components/Media/components/cloudinary/CloudinaryVideo";
 import {useQuery} from "@apollo/client";
-import {GetCloudyMedia} from "webappGraphql";
+import {GetCloudyMedia} from "_graphql";
 import { useTranslation } from "react-i18next";
 
-export const CloudinaryAsset = ({types,id,width,sourceID}) => {
+export const CloudinaryAsset = ({types,id,width,sourceID,...props}) => {
     const { t } = useTranslation();
     const { workspace, locale, cndTypes } = React.useContext(JahiaCtx);
 
@@ -27,10 +27,10 @@ export const CloudinaryAsset = ({types,id,width,sourceID}) => {
 
     switch (true){
         case types.includes(cndTypes.CLOUDINARY_IMAGE) :
-            return <CloudinaryImage title={title} baseUrl={baseUrl} endUrl={endUrl} width={width}/>
+            return <CloudinaryImage title={title} baseUrl={baseUrl} endUrl={endUrl} width={width} {...props}/>
 
         case types.includes(cndTypes.CLOUDINARY_VIDEO) :
-            return <CloudinaryVideo videoId={id} videoURL={url} ownerID={sourceID} />
+            return <CloudinaryVideo videoId={id} videoURL={url} ownerID={sourceID} {...props}/>
 
         default :
             return <></>

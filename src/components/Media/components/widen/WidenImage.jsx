@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const WidenImage = ({imageURL,title,width}) => {
+export const WidenImage = ({imageURL,title,width,...props}) => {
     const _SIZE_ = '{size}';
     const _SCALE_ = '{scale}';
     const _QUALITY_ = '{quality}';
@@ -11,7 +11,8 @@ export const WidenImage = ({imageURL,title,width}) => {
     return (
         <img className="d-block w-100"
          src={imageURL.replace(_SIZE_,width).replace(_SCALE_,scale).replace(_QUALITY_,quality)}
-         alt={title}/>
+         alt={title}
+         {...props}/>
     )
 }
 

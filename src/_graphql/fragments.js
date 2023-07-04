@@ -17,5 +17,5 @@ export const CORE_NODE_FIELDS = gql`
 export const MEDIA_PROPERTY = gql`
     ${CORE_NODE_FIELDS}
     fragment MediaProperty on JCRNode {
-        media: property(name:"doc4:image",){ node: refNode { ...CoreNodeFields } }
+        media: property(name:"doc4:image",){ refNode { ...CoreNodeFields } }
     }`;

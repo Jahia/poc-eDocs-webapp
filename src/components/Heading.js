@@ -1,5 +1,5 @@
 import {Box, Grid, Typography} from "@mui/material";
-import {DefaultImage} from "./images";
+import {Media} from "./Media";
 import React from "react";
 
 export const Heading = ({documentData,...props}) => (
@@ -47,10 +47,10 @@ export const Heading = ({documentData,...props}) => (
                     </Grid>
                 </Grid>
             </Box>
-            {/*<DefaultImage sx={{pt:1}} path={documentData?.company?.refNode?.logo?.refNode?.path} width="100%"/>*/}
+            <Media media={documentData?.company?.refNode?.logo?.refNode} style={{width:"100%"}}/>
         </Grid>
         <Grid item xs={12} md={8}>
-            {/*<DefaultImage style={{objectFit:'cover', maxHeight:'500px'}} path={documentData?.media?.refNode?.path} width="100%"/>*/}
+            <Media style={{objectFit:'cover', maxHeight:'500px', width:"100%"}} media={documentData?.media?.refNode}/>
         </Grid>
     </Grid>
 )
