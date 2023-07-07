@@ -31,6 +31,11 @@ export const queryDocument = gql`
                         ...MediaProperty
                     }
                 }
+                config : property(name:"doc4:webAppConfig",){ refNode {
+                        ...CoreNodeFields
+                        userTheme: property(name:"doc4:webappTheme"){ value }
+                    }
+                }
                 ...MediaProperty
             }
         }

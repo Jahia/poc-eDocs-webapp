@@ -59,7 +59,7 @@ function getNodeKey(uuid, workspace) {
 }
 
 export const getClient = (gqlEndpoint) => {
-    console.log('Creating apollo client');
+    // console.debug('Creating apollo client');
 
     // Map of path/uuid to be able to resolve cache key when we only have the path during cache resolving
     const idByPath = {};

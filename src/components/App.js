@@ -39,7 +39,7 @@ function App() {
   if (error) return <p>Error :(</p>;
 
   const documentData = data?.jcr?.nodeById;
-  const userTheme = documentData?.userTheme?.value || {};//not implemented yet value is already {}
+  const userTheme = documentData?.config?.refNode?.userTheme?.value || {};
   const site = documentData?.site?.displayName;
 
   return (

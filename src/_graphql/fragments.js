@@ -11,7 +11,11 @@ export const CORE_NODE_FIELDS = gql`
             supertypes{name}
         }
         mixinTypes {name}
-        site{displayName}
+        site{
+            workspace
+            uuid
+            displayName
+        }
     }`;
 
 export const MEDIA_PROPERTY = gql`
