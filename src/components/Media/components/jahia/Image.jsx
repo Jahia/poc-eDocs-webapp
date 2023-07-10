@@ -7,9 +7,7 @@ export const Image = ({path,alt,...props}) =>{
     const { host, workspace } = React.useContext(JahiaCtx);
     const src = resolveJahiaMediaURL({host,path,workspace})
     return(
-        <img className=""
-             // src={`${filesServerUrl}${encodeURI(path)}`}
-             src={src}
+        <img src={src}
              alt={alt}
              {...props}/>
     )

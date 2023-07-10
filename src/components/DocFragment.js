@@ -3,7 +3,8 @@ import {Box, Grid, Typography} from "@mui/material";
 import React from "react";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
 import Moment from "react-moment";
-
+import {Media} from "./Media";
+import './DocFragment.css';
 
 export const DocFragment = ({fragment,site,index,...props}) => {
     const fragmentSite = fragment.site.displayName;
@@ -94,6 +95,7 @@ export const DocFragment = ({fragment,site,index,...props}) => {
             <Grid container spacing={1}
                   sx={{
                       pt:2,
+                      width:"100%"
                   }}>
                 <Grid
                     item
@@ -104,6 +106,17 @@ export const DocFragment = ({fragment,site,index,...props}) => {
                 >
                     <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(fragment.content.value)}}/>
                 </Grid>
+                { fragment.media?.refNode &&
+                    <Grid
+                        item
+                        sx={{
+                            width:"100%",
+                            position:"relative"
+                        }}>
+                        <Grid item className="gradient-image">
+                            <Media media={fragment.media?.refNode} style={{width:"100%",objectFit:"cover",maxHeight:"500px"}}/>
+                        </Grid>
+                    </Grid>}
             </Grid>
         </>
     )
