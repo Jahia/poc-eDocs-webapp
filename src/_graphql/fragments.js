@@ -27,6 +27,7 @@ export const MEDIA_PROPERTY = gql`
 export const WEBAPP_CONFIG = gql`
     fragment WebappConfig on JCRNode {
         userTheme: property(name:"doc4:webappTheme"){ value }
+        userCss: property(name:"doc4:webappCustomCss"){ value }
         LabelOwner: property(language:$language, name:"doc4:owner"){ value }
         LabelAddress: property(language:$language, name:"doc4:address"){ value }
         LabelPhone: property(language:$language, name:"doc4:phone"){ value }

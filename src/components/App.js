@@ -42,6 +42,13 @@ function App() {
   const userTheme = documentData?.config?.refNode?.userTheme?.value || {};
   const site = documentData?.site?.displayName;
 
+    if(documentData?.config?.refNode?.userCss?.value && !document.getElementById('docsCustomUserCssBloc')){
+        const style = document.createElement('style');
+        style.id = 'docsCustomUserCssBloc';
+        style.textContent= documentData.config.refNode.userCss.value;
+        document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
   return (
       <ThemeProvider theme={mergedTheme(userTheme)}>
         <DocumentLayoutRoot>
