@@ -1,9 +1,10 @@
 import {gql} from "@apollo/client";
-import {CORE_NODE_FIELDS,MEDIA_PROPERTY} from "./fragments"
+import {CORE_NODE_FIELDS, MEDIA_PROPERTY, WEBAPP_CONFIG} from "./fragments"
 
 export const queryDocument = gql`
     ${CORE_NODE_FIELDS}
     ${MEDIA_PROPERTY}
+    ${WEBAPP_CONFIG}
     query($workspace: Workspace!, $id: String!,$language:String!){
         jcr(workspace: $workspace) {
             workspace
@@ -33,7 +34,7 @@ export const queryDocument = gql`
                 }
                 config : property(name:"doc4:webAppConfig",){ refNode {
                         ...CoreNodeFields
-                        userTheme: property(name:"doc4:webappTheme"){ value }
+                        ...WebappConfig
                     }
                 }
                 ...MediaProperty

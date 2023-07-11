@@ -57,7 +57,7 @@ function App() {
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 <Heading documentData={documentData}/>
 
-                <Company companyData={documentData?.company?.refNode}/>
+                <Company companyData={documentData?.company?.refNode} configData={documentData?.config?.refNode}/>
 
                 <TableOfContents documentData={documentData}/>
 

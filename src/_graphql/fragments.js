@@ -23,3 +23,12 @@ export const MEDIA_PROPERTY = gql`
     fragment MediaProperty on JCRNode {
         media: property(name:"doc4:image",){ refNode { ...CoreNodeFields } }
     }`;
+
+export const WEBAPP_CONFIG = gql`
+    fragment WebappConfig on JCRNode {
+        userTheme: property(name:"doc4:webappTheme"){ value }
+        LabelOwner: property(language:$language, name:"doc4:owner"){ value }
+        LabelAddress: property(language:$language, name:"doc4:address"){ value }
+        LabelPhone: property(language:$language, name:"doc4:phone"){ value }
+        LabelEmail: property(language:$language, name:"doc4:email"){ value }
+    }`;

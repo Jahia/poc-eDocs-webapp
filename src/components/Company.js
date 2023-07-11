@@ -8,7 +8,7 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 // import WorkIcon from '@mui/icons-material/Work';
 // import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 
-export const Company = ({companyData,...props}) => (
+export const Company = ({companyData,configData,...props}) => (
     <Grid container spacing={0} sx={{border: 1, borderColor:'primary.main',mt:5}}>
         <Grid item xs={12} sm={6}>
             <List sx={{ width: '100%'}}>
@@ -18,7 +18,7 @@ export const Company = ({companyData,...props}) => (
                             <PersonIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={companyData?.owner?.value} secondary="Conseiller" />
+                    <ListItemText primary={companyData?.owner?.value} secondary={configData?.LabelOwner?.value || ''} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -28,7 +28,7 @@ export const Company = ({companyData,...props}) => (
                     </ListItemAvatar>
                     <ListItemText
                         primary={`${companyData?.adresse?.value} - ${companyData?.zipcode?.value}, ${companyData?.city?.value}`}
-                        secondary="Adresse"
+                        secondary={configData?.LabelAddress?.value || ''}
                     />
                 </ListItem>
             </List>
@@ -41,7 +41,7 @@ export const Company = ({companyData,...props}) => (
                             <ContactPhoneIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={companyData?.mobile?.value} secondary="Téléphone"/>
+                    <ListItemText primary={companyData?.mobile?.value} secondary={configData?.LabelPhone?.value || ''}/>
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -49,7 +49,7 @@ export const Company = ({companyData,...props}) => (
                             <AlternateEmailIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={companyData?.email?.value} secondary="Courriel"/>
+                    <ListItemText primary={companyData?.email?.value} secondary={configData?.LabelEmail?.value || ''}/>
                 </ListItem>
             </List>
         </Grid>
